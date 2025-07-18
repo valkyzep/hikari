@@ -1,1 +1,0 @@
-import{b as e,c as t,d as n,e as r,f as i}from"./index-EZ96YreR.js";const a={class:`contact`};var o=i({__name:`ContactView`,setup(e){return(e,i)=>(n(),t(`div`,a,i[0]||=[r(`h1`,null,`Contact Us`,-1),r(`p`,null,`Contact form or details go here.`,-1)]))}}),s=e(o,[[`__scopeId`,`data-v-791e3599`]]);export{s as default};

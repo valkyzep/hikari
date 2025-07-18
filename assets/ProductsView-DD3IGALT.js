@@ -1,0 +1,1 @@
+import{b as e,e as t,f as n}from"./index-DQRODwbo.js";const r={};function i(e,r){return n(),t(`div`,null,`Products Page`)}var a=e(r,[[`render`,i]]);export{a as default};

@@ -1,0 +1,1 @@
+import{b as e,c as t,d as n,e as r,f as i}from"./index-DQRODwbo.js";const a={class:`contact`};var o=t({__name:`ContactView`,setup(e){return(e,t)=>(i(),r(`div`,a,t[0]||=[n(`h1`,null,`Contact Us`,-1),n(`p`,null,`Contact form or details go here.`,-1)]))}}),s=e(o,[[`__scopeId`,`data-v-791e3599`]]);export{s as default};
