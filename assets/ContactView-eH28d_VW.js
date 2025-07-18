@@ -1,1 +1,0 @@
-import{b as e,c as t,d as n,e as r,f as i}from"./index-CiOjYulw.js";const a={class:`contact`};var o=r({__name:`ContactView`,setup(e){return(e,r)=>(n(),t(`div`,a,r[0]||=[i(`h1`,null,`Contact Us`,-1),i(`p`,null,`Contact form or details go here.`,-1)]))}}),s=e(o,[[`__scopeId`,`data-v-791e3599`]]);export{s as default};
