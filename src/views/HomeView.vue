@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import BackgroundGallery from '@/components/BackgroundGallery.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <main>
