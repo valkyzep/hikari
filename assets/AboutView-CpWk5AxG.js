@@ -1,1 +1,0 @@
-import{b as e,d as t,e as n,f as r}from"./index-DQRODwbo.js";const i={},a={class:`about`};function o(e,i){return r(),n(`div`,a,i[0]||=[t(`h1`,null,`This is an about page`,-1)])}var s=e(i,[[`render`,o]]);export{s as default};
