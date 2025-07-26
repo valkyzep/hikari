@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { reactive, computed } from 'vue'
-import brand1 from '/src/assets/brand-logo/axis.webp'
+//import brands
+import brand1 from '@/assets/brand-logo/axis.webp'
 import brand2 from '@/assets/brand-logo/baldo.jpg'
 import brand3 from '@/assets/brand-logo/bridgestone.png'
 import brand4 from '@/assets/brand-logo/callaway.png'
@@ -21,56 +21,29 @@ import brand18 from '@/assets/brand-logo/xxio.jpg'
 import brand19 from '@/assets/brand-logo/yamaha.png'
 
 
-// Brands 3D slider logic
 const brands = [
-  { name: 'Brand 1', img: brand1 },
-  { name: 'Brand 2', img: brand2 },
-  { name: 'Brand 3', img: brand3 },
-  { name: 'Brand 4', img: brand4 },
-  { name: 'Brand 5', img: brand5 },
-  { name: 'Brand 6', img: brand6 },
-  { name: 'Brand 7', img: brand7 },
-  { name: 'Brand 8', img: brand8 },
-  { name: 'Brand 9', img: brand9 },
-  { name: 'Brand 10', img: brand10 },
-  { name: 'Brand 11', img: brand11 },
-  { name: 'Brand 12', img: brand12 },
-  { name: 'Brand 13', img: brand13 },
-  { name: 'Brand 14', img: brand14 },
-  { name: 'Brand 15', img: brand15 },
-  { name: 'Brand 16', img: brand16 },
-  { name: 'Brand 17', img: brand17 },
-  { name: 'Brand 18', img: brand18 },
-  { name: 'Brand 19', img: brand19 }
-
+  { name: 'Axis', img: brand1 },
+  { name: 'Baldo', img: brand2 },
+  { name: 'Bridgestone', img: brand3 },
+  { name: 'Callaway', img: brand4 },
+  { name: 'Epon', img: brand5 },
+  { name: 'Honma', img: brand6 },
+  { name: 'JBeam', img: brand7 },
+  { name: 'Kotobuki', img: brand8 },
+  { name: 'Kyoei', img: brand9 },
+  { name: 'Miura', img: brand10 },
+  { name: 'Mizuno', img: brand11 },
+  { name: 'OnOff', img: brand12 },
+  { name: 'Ryoma', img: brand13 },
+  { name: 'Srixon', img: brand14 },
+  { name: 'TaylorMade', img: brand15 },
+  { name: 'Titleist', img: brand16 },
+  { name: 'Vega', img: brand17 },
+  { name: 'XXIO', img: brand18 },
+  { name: 'Yamaha', img: brand19 }
 ]
 
-const brandsState = reactive({ angle: 0 })
-const totalBrands = brands.length
-const radius = 1000 // px, distance from center
 
-// Automatic rotation for brands slider
-import { onMounted as onMountedBrands, onUnmounted as onUnmountedBrands } from 'vue'
-let brandsInterval: number | undefined
-onMountedBrands(() => {
-  brandsInterval = window.setInterval(() => {
-    brandsState.angle += 360 / totalBrands / 80 // smooth step
-  }, 80) // 80 steps per brand, 1s per brand
-})
-onUnmountedBrands(() => {
-  if (brandsInterval) clearInterval(brandsInterval)
-})
-
-function getBrandSlideStyle(idx: number) {
-  const angle = (360 / totalBrands) * idx - brandsState.angle
-  return {
-    transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
-  }
-}
-
-const brandsSliderStyle = computed(() => ({
-  transform: `rotateX(0deg) translateZ(-${radius}px)`,
-}))
 
 // In <script setup lang="ts">
 import backgroundVideo from '@/assets/test-vid.mp4'
@@ -92,37 +65,37 @@ import backgroundVideo from '@/assets/test-vid.mp4'
       <div class="welcome-text">Welcome to Hikari</div>
     </div>
 
-    <div class="products-section" id="products-section">
-      <h2 class="products-title">Our Products</h2>
-      <div class="products-container">
-        <div class="product-card">
-          <div class="product-image-container">
-            <img src="/src/assets/cover.png" alt="Product 1" class="product-image" />
-            <div class="product-title-overlay">Apparel &<br> Personal Gear</div>
+    <div class="products-section-cat" id="products-section-cat">
+      <h2 class="products-title-cat">Our Products</h2>
+      <div class="products-container-cat">
+        <div class="product-card-cat">
+          <div class="product-image-container-cat">
+            <img src="/src/assets/cover.png" alt="Product 1" class="product-image-cat" />
+            <div class="product-title-overlay-cat">Apparel &<br> Personal Gear</div>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image-container">
-            <img src="/src/assets/IMG_6650.png" alt="Product 2" class="product-image" />
-            <div class="product-title-overlay">Accesories</div>
+        <div class="product-card-cat">
+          <div class="product-image-container-cat">
+            <img src="/src/assets/IMG_6650.png" alt="Product 2" class="product-image-cat" />
+            <div class="product-title-overlay-cat">Accesories</div>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image-container">
-            <img src="/src/assets/IMG_6660.png" alt="Product 3" class="product-image" />
-            <div class="product-title-overlay">Bags</div>
+        <div class="product-card-cat">
+          <div class="product-image-container-cat">
+            <img src="/src/assets/IMG_6660.png" alt="Product 3" class="product-image-cat" />
+            <div class="product-title-overlay-cat">Bags</div>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image-container">
-            <img src="/src/assets/IMG_6614.png" alt="Product 4" class="product-image" />
-            <div class="product-title-overlay">Clubs</div>
+        <div class="product-card-cat">
+          <div class="product-image-container-cat">
+            <img src="/src/assets/IMG_6614.png" alt="Product 4" class="product-image-cat" />
+            <div class="product-title-overlay-cat">Clubs</div>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-image-container">
-            <img src="/src/assets/IMG_6617.png" alt="Product 5" class="product-image" />
-            <div class="product-title-overlay">Aide</div>
+        <div class="product-card-cat">
+          <div class="product-image-container-cat">
+            <img src="/src/assets/IMG_6617.png" alt="Product 5" class="product-image-cat" />
+            <div class="product-title-overlay-cat">Aide</div>
           </div>
         </div>
 
@@ -131,12 +104,11 @@ import backgroundVideo from '@/assets/test-vid.mp4'
 
     <!-- About Section -->
     <section class="about-section" id="about-section">
-      <h2 class="about-title">About</h2>
       <div class="about-containers">
         <!-- WHO ARE WE -->
         <div class="about-card who-are-we">
           <div class="about-card-content">
-            <div class="about-card-title">WHO WE ARE</div>
+            <div class="about-card-title"><h2>WHO WE ARE</h2></div>
             <div class="about-card-text">
               <span style="font-weight: bold">HIKARI GOLF</span>, founded in May 2021, is a
               performance-first golf lifestyle brand redefining the game through cutting-edge
@@ -154,7 +126,7 @@ import backgroundVideo from '@/assets/test-vid.mp4'
             <img src="/src/assets/cover.png" class="about-image" alt="Mission" />
           </div>
           <div class="about-card-content">
-            <div class="about-card-title">Mission</div>
+            <div class="about-card-title"><h2>Mission</h2></div>
             <div class="about-card-text">
               Our mission is to empower every golfer to perform with confidence, express their
               individuality, and pursue excellence—on and off the course. We craft premium apparel,
@@ -166,7 +138,7 @@ import backgroundVideo from '@/assets/test-vid.mp4'
         <!-- Vision -->
         <div class="about-card vision">
           <div class="about-card-content">
-            <div class="about-card-title">Vision</div>
+            <div class="about-card-title"><h2>Vision</h2></div>
             <div class="about-card-text">
               To lead the evolution of modern golf culture—where performance meets elegance,
               diversity drives progress, and a bold new standard lights the path for the next
@@ -181,24 +153,14 @@ import backgroundVideo from '@/assets/test-vid.mp4'
     </section>
 
     <!-- Brands We Carry Section -->
-    <section class="brands-section" id="brands-section">
-      <h2 class="brands-title">Brands We Carry</h2>
-      <div class="brands-slider-container">
-        <div class="brands-slider-3d" :style="brandsSliderStyle">
-          <div
-            v-for="(brand, idx) in brands"
-            :key="brand.img"
-            class="brand-slide"
-            :style="getBrandSlideStyle(idx)"
-          >
-            <div class="brand-slide-front">
-              <img :src="brand.img" :alt="brand.name" class="brand-img" />
-            </div>
-            <div class="brand-slide-back"></div>
-          </div>
-        </div>
+    <section class="brand-container">
+    <h2 class="brand-title">Our Brands</h2>
+    <div class="brand-grid">
+      <div v-for="(brand, index) in brands" :key="index" class="brand-card">
+        <img :src="brand.img" :alt="brand.name" class="brand-image" />
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact-section">
@@ -257,359 +219,4 @@ import backgroundVideo from '@/assets/test-vid.mp4'
     </section>
   </main>
 </template>
-<style scoped>
 
-/* Our Products container styles */
-.products-section {
-  width: 100%;
-  height: 300px;
-
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 100px 0 100px;
-  background-color: white;
-}
-.products-section .products-title {
-  color: black;
-  font-size: 2rem;
-  font-weight: bold;
-  background-color: transparent;
-}
-.products-container {
-  display: flex;
-  gap: 1.5rem;
-  width: 100%;
-  justify-content: center;
-  padding: 20px;
-}
-.product-card {
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
-  border-radius: 10px;
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
-}
-
-.product-card:hover {
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
-  transform: scale(1.05);
-}
-
-.product-title {
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  width: 100%;
-  letter-spacing: 0.5px;
-}
-.product-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  display: block;
-}
-.product-image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-title-overlay {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 0.5rem 0;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: center;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  z-index: 2;
-  letter-spacing: 0.5px;
-  line-height: 1;
-}
-/* Background gallery container styles */
-.background-gallery-container {
-  width: 100%;
-  height: 400px;
-  margin-top: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background: #181818; /* fallback background, adjust as needed */
-  overflow: hidden;
-}
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-
-.welcome-text {
-  color: #fff;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  z-index: 2;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-.about-section {
-  width: 100%;
-  padding: 0 100px 0 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-}
-.about-title {
-  color: black;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-  letter-spacing: 0.5px;
-}
-.about-containers {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-.about-card {
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.about-card-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #000;
-}
-.who-are-we {
-  text-align: center;
-  justify-content: center;
-  margin: 0 0 10px 0;
-  padding: 0 125px 0 125px;
-  color: #000;
-}
-.mission {
-  background-color: #f5eeda;
-  height: 200px;
-  margin: 10px 0 10px 0;
-  color:#000;
-}
-.vision {
-  background-color: #f5eeda;
-  height: 200px;
-  margin: 10px 0 10px 0;
-  color:#000;
-}
-.about-card-image {
-  width: 70%;
-  height: 100%;
-  overflow: hidden;
-}
-.about-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.about-card-content {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0 75px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centers horizontally */
-  align-items: left; /* centers vertically */
-  /* centers inline text inside elements like <p> or <span> */
-}
-
-/* Contact Section Styles */
-.contact-section {
-  width: 100%;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: white;
-  padding: 20px 0 20px 0;
-}
-.contact-title {
-  color: #222;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-  letter-spacing: 0.5px;
-  line-height: 1;
-}
-.contact-section p {
-  color: black;
-  font-weight: bold;
-}
-.contact-containers {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  gap: 2rem;
-  width: 100%;
-  max-width: 900px;
-  padding: 100px;
-}
-.contact-card {
-  flex: 1 1 0;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-  min-width: 180px;
-  max-width: 250px;
-  transition:
-    box-shadow 0.2s,
-    transform 0.2s;
-}
-.contact-card:hover {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
-  transform: translateY(-6px) scale(1.04);
-}
-.contact-icon {
-  margin-bottom: 1rem;
-}
-.contact-label {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #222;
-  text-align: center;
-}
-.contact-card.facebook .contact-icon svg {
-  filter: drop-shadow(0 2px 6px #1877f3aa);
-}
-.contact-card.telegram .contact-icon svg {
-  filter: drop-shadow(0 2px 6px #0088ccaa);
-}
-.contact-card.whatsapp .contact-icon svg {
-  filter: drop-shadow(0 2px 6px #25d366aa);
-}
-/* Brands We Carry Section Styles */
-.brands-section {
-  width: 100%;
-  padding: 0 100px 0 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: white;
-}
-.brands-title {
-  color: #000;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-  letter-spacing: 0.5px;
-}
-.brands-slider-container {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  perspective: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.brands-slider-3d {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.brand-slide {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 150px;
-  margin: -75px 0 0 -150px;
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
-  transition:
-    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.2s;
-  transform-style: preserve-3d;
-  overflow: visible;
-}
-.brand-slide-front,
-.brand-slide-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backface-visibility: hidden;
-}
-.brand-slide-front {
-  background: #fff;
-  z-index: 2;
-}
-.brand-slide-back {
-  background: #000;
-  transform: rotateY(180deg);
-  z-index: 1;
-}
-
-.brand-img {
-  max-width: 120px;
-  max-height: 80px;
-  object-fit: contain;
-}
-</style>
