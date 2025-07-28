@@ -1,52 +1,51 @@
 <script setup lang="ts">
+import { onMounted, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+onMounted(() => {
+  if (route.hash) {
+    nextTick(() => {
+      const el = document.querySelector(route.hash)
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }, 100) // Allow a tiny delay for layout/render
+      }
+    })
+  }
+})
+
+
 //import brands
-import brand1 from '@/assets/brand-logo/axis.webp'
-import brand2 from '@/assets/brand-logo/baldo.jpg'
-import brand3 from '@/assets/brand-logo/bridgestone.png'
-import brand4 from '@/assets/brand-logo/callaway.png'
-import brand5 from '@/assets/brand-logo/epon.png'
-import brand6 from '@/assets/brand-logo/honma.webp'
-import brand7 from '@/assets/brand-logo/jbeam.png'
-import brand8 from '@/assets/brand-logo/kotobuki.png'
-import brand9 from '@/assets/brand-logo/kyoei.webp'
-import brand10 from '@/assets/brand-logo/miura.png'
-import brand11 from '@/assets/brand-logo/mizuno.png'
-import brand12 from '@/assets/brand-logo/onoff.webp'
-import brand13 from '@/assets/brand-logo/ryoma.jpg'
-import brand14 from '@/assets/brand-logo/srixon.png'
-import brand15 from '@/assets/brand-logo/taylormade.png'
-import brand16 from '@/assets/brand-logo/titleist.png'
-import brand17 from '@/assets/brand-logo/vega.png'
-import brand18 from '@/assets/brand-logo/xxio.jpg'
-import brand19 from '@/assets/brand-logo/yamaha.png'
-
-
-const brands = [
-  { name: 'Axis', img: brand1 },
-  { name: 'Baldo', img: brand2 },
-  { name: 'Bridgestone', img: brand3 },
-  { name: 'Callaway', img: brand4 },
-  { name: 'Epon', img: brand5 },
-  { name: 'Honma', img: brand6 },
-  { name: 'JBeam', img: brand7 },
-  { name: 'Kotobuki', img: brand8 },
-  { name: 'Kyoei', img: brand9 },
-  { name: 'Miura', img: brand10 },
-  { name: 'Mizuno', img: brand11 },
-  { name: 'OnOff', img: brand12 },
-  { name: 'Ryoma', img: brand13 },
-  { name: 'Srixon', img: brand14 },
-  { name: 'TaylorMade', img: brand15 },
-  { name: 'Titleist', img: brand16 },
-  { name: 'Vega', img: brand17 },
-  { name: 'XXIO', img: brand18 },
-  { name: 'Yamaha', img: brand19 }
+const brandList = [
+  { name: 'Axis', file: 'axis.webp' },
+  { name: 'Baldo', file: 'baldo.jpg' },
+  { name: 'Bridgestone', file: 'bridgestone.png' },
+  { name: 'Callaway', file: 'callaway.png' },
+  { name: 'Epon', file: 'epon.png' },
+  { name: 'Honma', file: 'honma.webp' },
+  { name: 'JBeam', file: 'jbeam.png' },
+  { name: 'Kotobuki', file: 'kotobuki.png' },
+  { name: 'Kyoei', file: 'kyoei.webp' },
+  { name: 'Miura', file: 'miura.png' },
+  { name: 'Mizuno', file: 'mizuno.png' },
+  { name: 'OnOff', file: 'onoff.webp' },
+  { name: 'Ryoma', file: 'ryoma.jpg' },
+  { name: 'Srixon', file: 'srixon.png' },
+  { name: 'TaylorMade', file: 'taylormade.png' },
+  { name: 'Titleist', file: 'titleist.png' },
+  { name: 'Vega', file: 'vega.png' },
+  { name: 'XXIO', file: 'xxio.jpg' },
+  { name: 'Yamaha', file: 'yamaha.png' },
+  { name: 'Ping', file: 'ping.png' }
 ]
 
-
-
-// In <script setup lang="ts">
-import backgroundVideo from '@/assets/test-vid.mp4'
+const brands = brandList.map(({ name, file }) => ({
+  name,
+  img: new URL(`/src/assets/brand-logo/${file}`, import.meta.url).href
+}))
 
 
 
@@ -54,16 +53,15 @@ import backgroundVideo from '@/assets/test-vid.mp4'
 
 <template>
   <main>
-    <div class="background-gallery-container">
-      <div class="gallery-fade">
-        <video autoplay loop muted playsinline class="background-video">
-  <source :src="backgroundVideo" type="video/mp4" />
-</video>
+    <div class="background-gallery">
+  <div class="slide" style="background-image: url('src/assets/brand-logo/ping.png')"></div>
+  <div class="slide" style="background-image: url('src/assets/brand-logo/miura.png')"></div>
+  <div class="slide" style="background-image: url('src/assets/brand-logo/srixon.png')"></div>
+
+  <div class="welcome-text">Welcome to Hikari</div>
+</div>
 
 
-      </div>
-      <div class="welcome-text">Welcome to Hikari</div>
-    </div>
 
     <div class="products-section-cat" id="products-section-cat">
       <h2 class="products-title-cat">Our Products</h2>
@@ -120,58 +118,33 @@ import backgroundVideo from '@/assets/test-vid.mp4'
             </div>
           </div>
         </div>
-        <!-- Mission -->
-        <div class="about-card mission">
-          <div class="about-card-image left">
-            <img src="/src/assets/cover.png" class="about-image" alt="Mission" />
-          </div>
-          <div class="about-card-content">
-            <div class="about-card-title"><h2>Mission</h2></div>
-            <div class="about-card-text">
-              Our mission is to empower every golfer to perform with confidence, express their
-              individuality, and pursue excellence—on and off the course. We craft premium apparel,
-              high-performance equipment, and unforgettable experiences that elevate both play and
-              lifestyle.
-            </div>
-          </div>
-        </div>
-        <!-- Vision -->
-        <div class="about-card vision">
-          <div class="about-card-content">
-            <div class="about-card-title"><h2>Vision</h2></div>
-            <div class="about-card-text">
-              To lead the evolution of modern golf culture—where performance meets elegance,
-              diversity drives progress, and a bold new standard lights the path for the next
-              generation of players.
-            </div>
-          </div>
-          <div class="about-card-image right">
-            <img src="/src/assets/IMG_6650.png" class="about-image" alt="Vision" />
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- Brands We Carry Section -->
     <section class="brand-container">
-    <h2 class="brand-title">Our Brands</h2>
-    <div class="brand-grid">
-      <div v-for="(brand, index) in brands" :key="index" class="brand-card">
-        <img :src="brand.img" :alt="brand.name" class="brand-image" />
+      <div class="our-brands">
+        <h2 class="brand-title">Our Brands</h2>
+        <div class="brand-grid">
+          <div v-for="(brand, index) in brands" :key="index" class="brand-card">
+            <img :src="brand.img" :alt="brand.name" class="brand-image" />
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact-section">
+      <div class="con-sec">
       <h2 class="contact-title">Pre-Order Now</h2>
       <p>Reserve Yours Now</p>
       <div class="contact-containers">
         <div class="contact-card facebook">
           <div class="contact-icon">
             <svg
-              width="40"
-              height="40"
+              width="clamp(3.125rem, 1.645rem + 2.28vw, 4.375rem)"
+              height="clamp(3.125rem, 1.645rem + 2.28vw, 4.375rem)"
               viewBox="0 0 24 24"
               fill="#1877F3"
               xmlns="http://www.w3.org/2000/svg"
@@ -186,8 +159,8 @@ import backgroundVideo from '@/assets/test-vid.mp4'
         <div class="contact-card telegram">
           <div class="contact-icon">
             <svg
-              width="40"
-              height="40"
+              width="clamp(3.125rem, 1.645rem + 2.28vw, 4.375rem)"
+              height="clamp(3.125rem, 1.645rem + 2.28vw, 4.375rem)"
               viewBox="0 0 24 24"
               fill="#0088cc"
               xmlns="http://www.w3.org/2000/svg"
@@ -202,8 +175,8 @@ import backgroundVideo from '@/assets/test-vid.mp4'
         <div class="contact-card whatsapp">
           <div class="contact-icon">
             <svg
-              width="40"
-              height="40"
+              width="clamp(3.125rem, 1.645rem + 2.28vw, 4.375rem)"
+              height="clamp(3.125rem, 1.645rem + 2.28vw, 4.375rem)"
               viewBox="0 0 24 24"
               fill="#25D366"
               xmlns="http://www.w3.org/2000/svg"
@@ -215,6 +188,7 @@ import backgroundVideo from '@/assets/test-vid.mp4'
           </div>
           <div class="contact-label">WhatsApp</div>
         </div>
+      </div>
       </div>
     </section>
   </main>

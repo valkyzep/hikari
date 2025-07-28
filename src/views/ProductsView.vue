@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
-import searchIcon from '@/assets/search.jpg'
+import { ref, computed } from 'vue'
 import img6655 from '@/assets/IMG_6655.png'
 
 // Define product type
@@ -11,38 +10,200 @@ type Product = {
   image: string
   gallery: string[]
   description: string
+  gearType: string
+  brand: string
+  status: string
 }
 
-const icon = searchIcon
-
 // Dummy products with gallery
-const products = ref<Product[]>(
-  Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    title: `Product ${i + 1}`,
+const products = ref<Product[]>([
+  {
+    id: 1,
+    title: 'Titleist T400 Iron Set',
+    price: '37,000 (slightly negotiable)',
+    image: img6655,
+    gallery: [img6655, img6655, img6655],
+    description: `
+      <ul>
+        <li><p>2021 Model and a Japan Release model</p></li>
+        <li><p>In great condition</p></li>
+        <li><p>7i to Pw, 43 Wedge and 49 Wedge (6pcs)</p></li>
+        <li><p>Super strong lofted irons (7i is at 26 degrees of loft)</p></li>
+        <li><p>NSPro Zelos 7 Shafts and Golf Pride Grips</p></li>
+        <li><p>Good for Beginners and Novice players with slow downswing</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'titleist',
+    status: 'available',
+  },
+  {
+    id: 2,
+    title: 'Titleist Vokey SM10 Jet Black Wedge Set',
+    price: '39,000 (slightly negotiable)',
+    image: img6655,
+    gallery: [img6655, img6655, img6655],
+    description: `
+      <ul>
+        <li><p>2024 Model</p></li>
+        <li><p>Brand New</p></li>
+        <li><p>50, 54 and 58 Wedge Set</p></li>
+        <li><p>NSPro BV 105 Shafts</p></li>
+        <li><p>Plastics are still on the heads and grips</p></li>
+        <li><p>SRP in Empire Golf - Php 14,000 per piece</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'titleist',
+    status: 'available',
+  },
+  {
+    id: 3,
+    title: 'Ryoma DSI Iron Set',
+    price: '45,000 (slightly negotiable)',
+    image: img6655,
+    gallery: [img6655, img6655, img6655],
+    description: `
+      <ul>
+        <li><p>2018 Model and a Japan Release model</p></li>
+        <li><p>In great condition</p></li>
+        <li><p>6i to Pw, Aw and Sw (7 pcs.)</p></li>
+        <li><p>Strong lofted irons (7i is at 29 degrees of loft)</p></li>
+        <li><p>Stock Ryoma Tour AD 57g R Flex Shafts and Stock Ryoma Grips</p></li>
+        <li><p>Good for Seniors, Beginners and Novice players with slow downswing</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'ryoma',
+    status: 'available',
+  },
+  {
+    id: 4,
+    title: 'Titleist T350 Iron Set',
+    price: '75,000 (slightly negotiable)',
+    image: img6655,
+    gallery: [img6655, img6655, img6655],
+    description: `
+      <ul>
+        <li><p>2023 Model</p></li>
+        <li><p>Brand New</p></li>
+        <li><p>6i to Pw and 48 Wedge (6 pcs.)</p></li>
+        <li><p>Strong lofted irons (7i is at 29 degrees of loft)</p></li>
+        <li><p>Ns Pro 105T Stiff Flex Shafts</p></li>
+        <li><p>Very Forgiving Irons</p></li>
+        <li><p>SRP at Empire Golf - Php 113k</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'titleist',
+    status: 'available',
+  },
+  {
+    id: 5,
+    title: 'Ping G440 Iron Set',
+    price: '70,000 (slightly negotiable)',
+    image: img6655,
+    gallery: [img6655, img6655, img6655],
+    description: `
+      <ul>
+        <li><p>2025 Model</p></li>
+        <li><p>Brand New</p></li>
+        <li><p>6i to Pw, Uw (6 pcs.)</p></li>
+        <li><p>Strong lofted irons (7i is at 29 degrees of loft)</p></li>
+        <li><p>Ns Pro 950 Neo Stiff Flex</p></li>
+        <li><p>Very Forgiving Irons, good for Beginners and Novice Golfers</p></li>
+        <li><p>SRP at Golf Depot - Php 92k</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'ping',
+    status: 'available',
+  },
+  {
+    id: 6,
+    title: 'Callaway Elyte Iron Set',
     price: '65,000 (slightly negotiable)',
     image: img6655,
     gallery: [img6655, img6655, img6655],
     description: `
-  <ul>
-    <li><p>2025 Model</p></li>
-    <li><p>Brand New</p></li>
-    <li><p>6i to Pw (5 pcs.)</p></li>
-    <li><p>Strong lofted irons (7i is at 29 degrees of loft)</p></li>
-    <li><p>Ns Pro 950 Neo Stiff Flex</p></li>
-    <li><p>Very Forgiving Irons, good for Beginners and Novice Golfers</p></li>
-    <li><p>SRP at Transview - Php 80k</p></li>
-  </ul>
-`,
-  }))
-)
+      <ul>
+        <li><p>2025 Model</p></li>
+        <li><p>Brand New</p></li>
+        <li><p>6i to Pw (5 pcs.)</p></li>
+        <li><p>Strong lofted irons (7i is at 29 degrees of loft)</p></li>
+        <li><p>Ns Pro 950 Neo Stiff Flex</p></li>
+        <li><p>Very Forgiving Irons, good for Beginners and Novice Golfers</p></li>
+        <li><p>SRP at Transview - Php 80k</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'callaway',
+    status: 'available',
+  },
+  {
+    id: 7,
+    title: 'Callaway Elyte MAx Fast Iron Set',
+    price: '65,000 (slightly negotiable)',
+    image: img6655,
+    gallery: [img6655, img6655, img6655],
+    description: `
+      <ul>
+        <li><p>2025 Model</p></li>
+        <li><p>Brand New</p></li>
+        <li><p>6i to Pw (5 pcs.)</p></li>
+        <li><p>Strong lofted irons (7i is at 30 degrees of loft)</p></li>
+        <li><p>Ns Pro Zelos 7 Stiff Flex</p></li>
+        <li><p>Very Forgiving Irons, good for Beginners and Novice Golfers</p></li>
+        <li><p>SRP at Transview - Php 80k</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'callaway',
+    status: 'available',
+  },
+  {
+    id: 8,
+    title: 'Miura Giken CB-2008 Iron Set',
+    price: '40,000 (slightly negotiable)',
+    image: img6655,
+    gallery: [img6655, img6655, img6655],
+    description: `
+      <ul>
+        <li><p>2019 Model and a Japan Release model</p></li>
+        <li><p>In great condition</p></li>
+        <li><p>5i to Pw (6 pcs.)</p></li>
+        <li><p>Tradionally lofted irons (7i is at 32 degrees of loft)</p></li>
+        <li><p>NSPro Modus 105g Regular Flex/p></li>
+        <li><p>With Susas Japan Grip</p></li>
+        <li><p>Very forgiving Irons</p></li>
+        <li><p>Great for beginners</p></li>
+      </ul>
+    `,
+    gearType: 'clubs',
+    brand: 'miura',
+    status: 'available',
+  },
+])
+
+// Filter state
+const selectedGearType = ref('')
+const selectedBrand = ref('')
+const selectedStatus = ref('')
+
+// Computed filtered products
+const filteredProducts = computed(() => {
+  return products.value.filter((product) => {
+    const gearMatch = !selectedGearType.value || product.gearType === selectedGearType.value
+    const brandMatch = !selectedBrand.value || product.brand === selectedBrand.value
+    const statusMatch = !selectedStatus.value || product.status === selectedStatus.value
+    return gearMatch && brandMatch && statusMatch
+  })
+})
 
 
-// Selected product popup
+// Popup state
 const selectedProduct = ref<Product | null>(null)
-const selectedIndex = computed(() =>
-  products.value.findIndex(p => p.id === selectedProduct.value?.id)
-)
+const activeGalleryImageIndex = ref<number>(0)
 
 // Popup navigation
 function openPopup(product: Product) {
@@ -53,50 +214,8 @@ function openPopup(product: Product) {
 function closePopup() {
   selectedProduct.value = null
 }
-
-function goToNextProduct() {
-  if (selectedIndex.value < products.value.length - 1) {
-    selectedProduct.value = products.value[selectedIndex.value + 1]
-  }
-}
-
-function goToPreviousProduct() {
-  if (selectedIndex.value > 0) {
-    selectedProduct.value = products.value[selectedIndex.value - 1]
-  }
-}
-
-
-
-// Search icon toggle behavior
-onMounted(() => {
-  const toggleSearch = document.getElementById('toggleSearch') as HTMLElement | null
-  const searchInput = document.getElementById('searchInput') as HTMLInputElement | null
-
-  toggleSearch?.addEventListener('click', (e) => {
-    e.stopPropagation()
-    if (toggleSearch && searchInput) {
-      toggleSearch.style.display = 'none'
-      searchInput.classList.add('expanded')
-      searchInput.focus()
-    }
-  })
-
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement
-    if (!target.closest('.products-search') && toggleSearch && searchInput) {
-      searchInput.classList.remove('expanded')
-      setTimeout(() => {
-        toggleSearch.style.display = 'inline-block'
-      }, 1000)
-    }
-  })
-})
-
-//image gallery active
-const activeGalleryImageIndex = ref<number>(0)
-
 </script>
+
 
 
 
@@ -107,15 +226,8 @@ const activeGalleryImageIndex = ref<number>(0)
       <p>Explore our products</p>
     </div>
     <div class="products-filter">
-      <div class="products-search">
-        <button id="toggleSearch" class="search-toggle">
-          <img :src="icon" alt="Search" class="search-icon" />
-        </button>
-        <input type="text" id="searchInput" class="search-box" placeholder="Search products..." />
-      </div>
-
       <div class="products-sort">
-        <select class="products-gear-type">
+        <select class="products-gear-type" v-model="selectedGearType">
           <option value="">All Gear Types</option>
           <option value="apparel">Apparel & Personal Gear</option>
           <option value="accessories">Accessories</option>
@@ -123,7 +235,7 @@ const activeGalleryImageIndex = ref<number>(0)
           <option value="clubs">Clubs</option>
           <option value="aide">Aide</option>
         </select>
-        <select class="products-brand">
+        <select class="products-brand" v-model="selectedBrand">
           <option value="">All Brands</option>
           <option value="titleist">Titleist</option>
           <option value="callaway">Callaway</option>
@@ -144,27 +256,30 @@ const activeGalleryImageIndex = ref<number>(0)
           <option value="bridgestone">Bridgestone</option>
           <option value="yamaha">Yamaha</option>
           <option value="kyoei">Kyoei</option>
+          <option value="ping">Ping</option>
         </select>
-        <select class="products-status">
-          <option value="">All Status</option>
-          <option value="on-hand">On-hand</option>
+        <select class="products-status" v-model="selectedStatus">
+          <option value="">Product Status</option>
+          <option value="available">Available</option>
           <option value="pre-order">Pre-order</option>
         </select>
       </div>
     </div>
+
+<!-- Product Grid -->
     <div class="products container">
-  <div
-    v-for="product in products"
-    :key="product.id"
-    class="products-card"
-    @click="openPopup(product)"
-  >
-    <img :src="product.image" :alt="product.title" class="products-image" />
-    <div class="products-details">
-      <h2 class="products-title">{{ product.title }}</h2>
+      <div
+        v-for="product in filteredProducts"
+        :key="product.id"
+        class="products-card"
+        @click="openPopup(product)"
+      >
+      <img :src="product.image" :alt="product.title" class="products-image" />
+        <div class="products-details">
+          <h2 class="products-title">{{ product.title }}</h2>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 <!-- POPUP CONTAINER -->
 <div v-if="selectedProduct" class="popup-overlay" @click.self="closePopup">
@@ -175,25 +290,18 @@ const activeGalleryImageIndex = ref<number>(0)
   <h2 class="popup-title">{{ selectedProduct.title }}</h2>
   <p class="popup-price">₱{{ selectedProduct.price }}</p>
   <div
-    class="popup-description"
-    v-html="selectedProduct.description || '<p>This is a placeholder for more product details.</p>'"
-  ></div>
+    class="popup-description" v-html="selectedProduct.description">
+  </div>
+
   <div class="popup-contactus">
     <p>Can do meet-ups during weekends or in Pasig Area during weekdays.</p>
     <p>Can do shipping as well (Buyer to shoulder shipping fee).</p>
   </div>
-
-
-
   <!-- Bottom Controls -->
   <div class="popup-actions">
     <button class="product-button">Message Us Now</button>
-
-    <div class="product-navigation">
-      <button @click.stop="goToPreviousProduct">←</button>
-      <button @click.stop="goToNextProduct">→</button>
-    </div>
   </div>
+
 </div>
 
 
@@ -234,70 +342,3 @@ const activeGalleryImageIndex = ref<number>(0)
 
   </div>
 </template>
-<style scoped>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</style>
-<style>
-
-
-
-
-
-
-</style>
-
