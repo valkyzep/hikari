@@ -54,12 +54,18 @@ const brands = brandList.map(({ name, file }) => ({
 <template>
   <main>
     <div class="background-gallery">
-  <div class="slide" style="background-image: url('src/assets/brand-logo/ping.png')"></div>
-  <div class="slide" style="background-image: url('src/assets/brand-logo/miura.png')"></div>
-  <div class="slide" style="background-image: url('src/assets/brand-logo/srixon.png')"></div>
+    <div
+  v-for="(brand, i) in brands"
+  :key="i"
+  class="slide"
+  :style="{
+    backgroundImage: `url(${brand.img})`,
+    animationDelay: `${i * 4}s`
+  }"
+></div>
 
-  <div class="welcome-text">Welcome to Hikari</div>
-</div>
+    <div class="welcome-text">Welcome to Hikari</div>
+  </div>
 
 
 

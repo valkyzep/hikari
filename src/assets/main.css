@@ -142,6 +142,7 @@
   opacity: 0;
   animation: fadeGallery 12s infinite;
   z-index: 1;
+  background-color: #222;
 }
 
 .slide:nth-child(1) { animation-delay: 0s; }
