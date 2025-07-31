@@ -103,12 +103,14 @@ body {
 
 body {
   scrollbar-width: none; /* Firefox */
+  background-color: white;
 }
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
 .main-content {
   flex: 1;
+
 }
 
 

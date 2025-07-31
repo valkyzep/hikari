@@ -21,14 +21,16 @@ function goHomeAndScrollToSection(sectionId: string) {
   if (route.path !== '/') {
     router.push({ path: '/', hash: `#${sectionId}` })
   } else {
-    // Already on home: manually scroll and update URL hash
     const el = document.getElementById(sectionId)
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' })
-      history.replaceState(null, '', `/#${sectionId}`)
+
+      // ✅ Manually update the hash so route.hash updates
+      router.replace({ path: '/', hash: `#${sectionId}` })
     }
   }
 }
+
 
 // Scroll to top of page
 function goHomeAndScrollTop() {
@@ -72,12 +74,29 @@ function closeMenu() {
 
     <!-- DESKTOP NAV -->
     <div class="navbar-tabs-desktop">
-      <a href="#" @click.prevent="goHomeAndScrollTop">Home</a>
-      <RouterLink to="/products">Products</RouterLink>
-      <a href="#contact-section" @click.prevent="goHomeAndScrollToSection('contact-section')">Contact Us</a>
-      <a href="#about-section" @click.prevent="goHomeAndScrollToSection('about-section')">About</a>
+  <a
+    href="#"
+    @click.prevent="goHomeAndScrollTop"
+    :class="{ active: route.path === '/' && !route.hash }"
+  >HOME</a>
 
-    </div>
+  <RouterLink
+    to="/products"
+    :class="{ active: route.path === '/products' }"
+  >PRODUCTS</RouterLink>
+
+  <a
+    href="#contact-section"
+    @click.prevent="goHomeAndScrollToSection('contact-section')"
+    :class="{ active: route.hash === '#contact-section' }"
+  >CONTACT US</a>
+
+  <a
+    href="#about-section"
+    @click.prevent="goHomeAndScrollToSection('about-section')"
+    :class="{ active: route.hash === '#about-section' }"
+  >ABOUT US</a>
+</div>
 
     <!-- MOBILE HAMBURGER -->
     <button class="hamburger" :class="{ open: isOpen }" @click="toggleMenu" aria-label="Toggle navigation">
@@ -89,10 +108,10 @@ function closeMenu() {
     <!-- MOBILE NAV -->
     <transition name="nav-fall">
       <div v-if="isOpen" class="navbar-tabs" @click.self="toggleMenu">
-        <a href="#" @click.prevent="goHomeAndScrollTop">Home</a>
-        <RouterLink to="/products" @click="closeMenu">Products</RouterLink>
-        <a href="#contact-section" @click.prevent="goHomeAndScrollToSection('contact-section')">Contact Us</a>
-        <a href="#about-section" @click.prevent="goHomeAndScrollToSection('about-section')">About</a>
+        <a href="#" @click.prevent="goHomeAndScrollTop">HOME</a>
+        <RouterLink to="/products" @click="closeMenu">PRODUCTS</RouterLink>
+        <a href="#contact-section" @click.prevent="goHomeAndScrollToSection('contact-section')">ABOUT US</a>
+        <a href="#about-section" @click.prevent="goHomeAndScrollToSection('about-section')">CONTACT US</a>
 
       </div>
     </transition>
@@ -104,35 +123,10 @@ function closeMenu() {
 
   <footer class="footer">
   <div class="footer-main">
-    <!-- Left Column: Contact Info -->
-    <div class="footer-col footer-contact-col">
-      <span>Contact us:</span>
-      <span>+1 (234) 567-8901</span>
-    </div>
-
-    <!-- Middle Column: Logo + Navigation -->
     <div class="footer-col footer-center-col">
       <img src="@/assets/Logo14.png" alt="Logo" class="footer-logo" />
-      <nav class="footer-nav">
-        <a href="#" @click.prevent="goHomeAndScrollTop">Home</a>
-        <RouterLink to="/products">Products</RouterLink>
-        <a href="#contact-section" @click.prevent="goHomeAndScrollToSection('contact-section')">Contact Us</a>
-        <a href="#about-section" @click.prevent="goHomeAndScrollToSection('about-section')">About</a>
-
-      </nav>
     </div>
-
-    <!-- Right Column: Social Icons -->
-    <div class="footer-col footer-social-col">
-  <div class="footer-social">
-    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
   </div>
-</div>
-
-  </div>
-
   <div class="footer-credits">
     <span>© 2025 Your Company. All rights reserved.</span>
   </div>
