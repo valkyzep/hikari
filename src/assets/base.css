@@ -55,16 +55,39 @@
   box-sizing: border-box;
   margin: 0;
 }
+/* Import custom font */
+/* Import custom font */
+@font-face {
+  font-family: 'Test';
+  src: url('/src/Fontfiles/MontBlanc-Trial-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+/* Global defaults */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: white; /* ✅ Set background to white */
+}
+
+/* Body styles */
 body {
   min-height: 100vh;
+  flex: 1;
   color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  background: white; /* ✅ Use white background explicitly */
+  transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family:
+    'Test',
     Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -80,37 +103,26 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-html,
-body {
-  height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  background-color: rgba(38, 37, 37, 0.951);
-  display: flex;
-  flex-direction: column;
-}
 
-#app {
-  min-height: 100vh;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-body {
+  /* Scrollbar hidden */
   scrollbar-width: none; /* Firefox */
-  background-color: white;
 }
+
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+/* Vue app container */
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content area */
 .main-content {
   flex: 1;
-
 }
+
 
 

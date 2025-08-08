@@ -69,7 +69,7 @@ function closeMenu() {
 <template>
   <header>
   <nav class="navbar">
-    <a class="logo" href="#" @click.prevent="goHomeAndScrollTop"><img src="@/assets/Logo14.png" alt="Logo" class="navbar-logo" /></a>
+    <a class="logo" href="#" @click.prevent="goHomeAndScrollTop"><img src="@/assets/Images/Logohead.png" alt="Logo" class="navbar-logo" /></a>
 
 
     <!-- DESKTOP NAV -->
@@ -90,12 +90,6 @@ function closeMenu() {
     @click.prevent="goHomeAndScrollToSection('contact-section')"
     :class="{ active: route.hash === '#contact-section' }"
   >CONTACT US</a>
-
-  <a
-    href="#about-section"
-    @click.prevent="goHomeAndScrollToSection('about-section')"
-    :class="{ active: route.hash === '#about-section' }"
-  >ABOUT US</a>
 </div>
 
     <!-- MOBILE HAMBURGER -->
@@ -124,7 +118,7 @@ function closeMenu() {
   <footer class="footer">
   <div class="footer-main">
     <div class="footer-col footer-center-col">
-      <img src="@/assets/Logo14.png" alt="Logo" class="footer-logo" />
+      <img src="@/assets/Images/Logofooter.png" alt="Logo" class="footer-logo" />
     </div>
   </div>
   <div class="footer-credits">
