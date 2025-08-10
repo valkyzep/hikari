@@ -953,7 +953,7 @@
   display: flex;
   justify-content: center;
   align-items: stretch; /* make all columns same height */
-  height: clamp(6.25rem, -3.125rem + 50vw, 15.625rem); /* or a fixed height like 500px if needed */
+  height: auto; /* or a fixed height like 500px if needed */
   width: clamp(17.5rem, -0.625rem + 96.67vw, 35.625rem);
   padding: clamp(0.313rem, 1.67vw, 0.625rem) 0;
   gap: clamp(0.125rem, -0.063rem + 1vw, 0.313rem);
