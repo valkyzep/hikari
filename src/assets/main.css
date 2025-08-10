@@ -892,6 +892,8 @@
   cursor: pointer;
   border-radius: 0px;
   filter: brightness(7);
+  outline: none; /* Remove desktop focus outline */
+  -webkit-tap-highlight-color: transparent; /* Remove mobile blue overlay */
 }
 .product-card-cat:active{
   filter: none;
@@ -977,6 +979,8 @@
   cursor: pointer;
   overflow: hidden;
   filter: invert(1) brightness(0.7);
+  outline: none; /* Remove desktop focus outline */
+  -webkit-tap-highlight-color: transparent; /* Remove mobile blue overlay */
 }
 .brand-card:active{
   filter: none;
@@ -1043,6 +1047,8 @@
   cursor: pointer;
   filter: brightness(7);
   margin: 0;
+  outline: none; /* Remove desktop focus outline */
+  -webkit-tap-highlight-color: transparent; /* Remove mobile blue overlay */
 }
 .contact-card:active{
   filter: none;
