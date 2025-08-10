@@ -1040,8 +1040,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: clamp(2.344rem, 12.5vw, 4.688rem);
-  height: clamp(2.344rem, 12.5vw, 4.688rem);
+  width: clamp(1.875rem, 10vw, 3.75rem);
+  height: clamp(1.875rem, 10vw, 3.75rem);
   padding: 0;
   overflow: hidden;
   cursor: pointer;
