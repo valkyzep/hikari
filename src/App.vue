@@ -99,19 +99,18 @@ function closeMenu() {
       <span></span>
     </button>
 
-    <!-- MOBILE NAV -->
+
+  </nav>
+</header>
+<!-- MOBILE NAV -->
     <transition name="nav-fall">
       <div v-if="isOpen" class="navbar-tabs" @click.self="toggleMenu">
         <a href="#" @click.prevent="goHomeAndScrollTop">HOME</a>
         <RouterLink to="/products" @click="closeMenu">PRODUCTS</RouterLink>
-        <a href="#contact-section" @click.prevent="goHomeAndScrollToSection('contact-section')">ABOUT US</a>
-        <a href="#about-section" @click.prevent="goHomeAndScrollToSection('about-section')">CONTACT US</a>
+        <a href="#contact-section" @click.prevent="goHomeAndScrollToSection('contact-section')">CONTACT US</a>
 
       </div>
     </transition>
-  </nav>
-</header>
-
 
   <div class="main-content"><router-view /></div>
 

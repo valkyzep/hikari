@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
-import banner1 from '@/assets/Images/Banners/Banner1-Desktop.jpg'
-import banner2 from '@/assets/Images/Banners/Banner2-Desktop.jpg'
-import banner3 from '@/assets/Images/Banners/Banner3-Desktop.jpg'
+// Desktop images
+import  '@/assets/Images/Banners/Banner1-Desktop.jpg'
+import  '@/assets/Images/Banners/Banner2-Desktop.jpg'
+import  '@/assets/Images/Banners/Banner3-Desktop.jpg'
+// Mobile images
+import  '@/assets/Images/Banners/Banner1-Mobile.jpg'
+import  '@/assets/Images/Banners/Banner2-Mobile.jpg'
+import  '@/assets/Images/Banners/Banner3-Mobile.jpg'
+
 
 const route = useRoute()
 
@@ -81,10 +87,10 @@ for (const size of columnSizes) {
 <template>
   <main>
     <div class="background-gallery">
-  <div class="slide" :style="{ backgroundImage: `url(${banner1})` }"></div>
-    <div class="slide" :style="{ backgroundImage: `url(${banner2})` }"></div>
-  <div class="slide" :style="{ backgroundImage: `url(${banner3})` }"></div>
-</div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+    </div>
 
 
 
@@ -97,24 +103,14 @@ for (const size of columnSizes) {
           </div>
           <div class="product-title-card-cat">CLUBS</div>
         </div>
+
         <div class="product-card-cat">
           <div class="product-image-container-cat">
             <img src="/src/assets/Images/Category/Catlogo-Apparel.png" alt="Product 2" class="product-image-cat" />
           </div>
           <div class="product-title-card-cat">APPARELS</div>
         </div>
-        <div class="product-card-cat">
-          <div class="product-image-container-cat">
-            <img src="/src/assets/Images/Category/Catlogo-Bags.png" alt="Product 3" class="product-image-cat" />
-          </div>
-          <div class="product-title-card-cat">BAGS</div>
-        </div>
-        <div class="product-card-cat">
-          <div class="product-image-container-cat">
-            <img src="/src/assets/Images/Category/Catlogo-Aide.png" alt="Product 4" class="product-image-cat" />
-          </div>
-          <div class="product-title-card-cat">AIDE</div>
-        </div>
+
         <div class="product-card-cat">
           <div class="product-image-container-cat">
             <img src="/src/assets/Images/Category/Catlogo-Accessory.png" alt="Product 5" class="product-image-cat" />
